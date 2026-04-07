@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Persona</title>
+    </head>
+    <body>
+        <h1>Datos de la persona</h1>
+        <p><strong>Nombre:</strong> <span th:text="${persona.nombre}"></span></p>
+        <p><strong>Apellidos:</strong> <span th:text="${persona.apellidos}"></span></p>
+        <p><strong>DNI:</strong> <span th:text="${persona.dni}"></span></p>
+        <p><strong>Fecha de nacimiento:</strong> <span th:text="${persona.fechaNacimiento}"></span></p>
+        <p><strong>Edad:</strong> <span th:text="${persona.edad}"></span></p>
+    </body>
+</html>

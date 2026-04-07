@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Predicción meteorológica</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
+        th { background-color: #f0f0f0; }
+        .uv-verde { background-color: green; color: white; }
+        .uv-naranja { background-color: orange; color: white; }
+        .uv-rojo { background-color: red; color: white; }
+        img { width: 50px; }
+    </style>
+</head>
+<body>
+<h1>Predicción meteorológica</h1>
+<table>
+    <thead>
+    <tr>
+        <th th:each="dia : ${dias}" th:text="${dia.fecha}"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td th:each="dia : ${dias}">
+            <img th:src="${dia.imagenUrl}" alt="estado cielo"/>
+        </td>
+    </tr>
+    <tr>
+        <td th:each="dia : ${dias}"
+            th:text="${dia.probabilidadPrecipitacion} + '%'">
+        </td>
+    </tr>
+    <tr>
+        <td th:each="dia : ${dias}"
+            th:text="${dia.temperaturaMinima} + '°C / ' + ${dia.temperaturaMaxima} + '°C'">
+        </td>
+    </tr>
+    <tr>
+        <td th:each="dia : ${dias}"
+            th:text="${dia.nivelUV}"
+            th:class="${dia.nivelUV <= 1} ? 'uv-verde' : (${dia.nivelUV <= 3} ? 'uv-naranja' : 'uv-rojo')">
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
